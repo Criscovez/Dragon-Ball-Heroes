@@ -9,15 +9,42 @@ import XCTest
 @testable import Dragon_Ball_Heroes
 
 final class Dragon_Ball_HeroesTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private var token: String?
+    
+    override func setUp() {
+        super.setUp()
+        print("SetUp para cada test")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override class func setUp() {
+        super.setUp()
+        print("SetUp para toda la clase")
     }
+    
+    override func tearDown() {
+        super.tearDown()
+        print("TearDown para cada test")
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+        print("TearDown para toda la clase")
+    }
+    
+    func test_helloWorld() {
+        token = "Hello World!"
+        
+        XCTAssertEqual(token, "Hello World!")
+        XCTAssertNotEqual(token, "Hola Mundo!")
+        
+    }
+    
 
+    func test_hotHelloWord() {
+        XCTAssertNil(token)
+        
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
